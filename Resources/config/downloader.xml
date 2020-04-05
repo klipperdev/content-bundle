@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="klipper_content.downloader" class="Klipper\Component\Content\Downloader\Downloader" public="true">
+            <argument type="service" id="klipper_content.image_manipulator" />
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="filesystem" />
+        </service>
+
+        <service id="Klipper\Component\Content\Downloader\DownloaderInterface" alias="klipper_content.downloader" />
+    </services>
+
+</container>

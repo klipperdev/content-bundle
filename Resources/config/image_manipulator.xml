@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="klipper_content.image_manipulator.gd" class="Imagine\Gd\Imagine" public="false" />
+
+        <service id="klipper_content.image_manipulator.imagick" class="Imagine\Imagick\Imagine" public="false" />
+
+        <service id="klipper_content.image_manipulator.gmagick" class="Imagine\Gmagick\Imagine" public="false" />
+
+        <service id="klipper_content.image_manipulator.imagine" alias="klipper_content.image_manipulator.gd"/>
+
+        <service id="klipper_content.image_manipulator.cache" class="Klipper\Component\Content\ImageManipulator\Cache\FilesystemCache" public="true">
+            <argument />
+            <argument type="service" id="filesystem" />
+        </service>
+
+        <service id="klipper_content.image_manipulator" class="Klipper\Component\Content\ImageManipulator\ImageManipulator" public="true">
+            <argument type="service" id="klipper_content.image_manipulator.imagine" />
+            <argument type="service" id="klipper_content.image_manipulator.cache" />
+            <argument/>
+            <argument type="collection"/>
+            <argument type="collection"/>
+            <argument type="service" id="filesystem" />
+        </service>
+    </services>
+
+</container>

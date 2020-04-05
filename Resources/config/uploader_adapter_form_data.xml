@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Post Upload Adapter -->
+        <service id="klipper_content.adapter.post"
+                 class="Klipper\Component\Content\Uploader\Adapter\FormData\FormDataAdapter">
+            <tag name="klipper_content.uploader.adapter" priority="-10" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="klipper_content.uploader.namer_manager" />
+        </service>
+    </services>
+</container>

@@ -1,0 +1,35 @@
+{
+    "name": "klipper/content-bundle",
+    "type": "symfony-bundle",
+    "description": "Content bundle of Klipper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "François Pluchino",
+            "email": "francois.pluchino@klipper.dev"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4.0",
+        "klipper/content": "^2.0.0",
+        "klipper/system": "^2.0.0",
+        "symfony/framework-bundle": "^4.3.0"
+    },
+    "require-dev": {
+        "klipper/routing-bundle": "^2.0.0",
+        "jms/serializer-bundle": "^3.4.0"
+    },
+    "autoload": {
+        "psr-4": { "Klipper\\Bundle\\ContentBundle\\": "" },
+        "exclude-from-classmap": [
+            "**/Tests/"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
+}

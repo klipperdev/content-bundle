@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Uploader Namer Manager -->
+        <service id="klipper_content.uploader.namer_manager"
+                 class="Klipper\Component\Content\Uploader\Namer\NamerManager"
+                 public="true">
+            <argument type="collection" />
+        </service>
+
+        <service id="Klipper\Component\Content\Uploader\Namer\NamerManagerInterface" alias="klipper_content.uploader.namer_manager" />
+
+        <!-- Uploader Namers -->
+        <service id="Klipper\Component\Content\Uploader\Namer\UuidNamer">
+            <tag name="klipper_content.uploader.namer" />
+        </service>
+
+        <service id="Klipper\Component\Content\Uploader\Namer\UniqidNamer">
+            <tag name="klipper_content.uploader.namer" />
+        </service>
+
+        <service id="Klipper\Component\Content\Uploader\Namer\UrlSafeNamer">
+            <tag name="klipper_content.uploader.namer" />
+        </service>
+    </services>
+</container>

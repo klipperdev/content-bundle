@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- TUS Server -->
+        <service id="klipper_content.tus_server.cache" class="TusPhp\Cache\FileStore">
+            <argument /><!-- Cache directory -->
+            <argument /><!-- Cache file -->
+        </service>
+
+        <service id="klipper_content.tus_server.middleware" class="TusPhp\Middleware\Middleware" />
+
+        <service id="klipper_content.tus_server"
+                 class="TusPhp\Tus\Server">
+            <argument type="service" id="klipper_content.tus_server.cache" />
+            <call method="setMiddleware">
+                <argument type="service" id="klipper_content.tus_server.middleware" />
+            </call>
+        </service>
+
+        <service id="Klipper\Component\Content\Uploader\Tus\Server" alias="klipper_content.tus_server" />
+        <service id="TusPhp\Tus\Server" alias="klipper_content.tus_server" />
+
+        <!-- TUS Server Upload Adapter -->
+        <service id="klipper_content.adapter.tus_server"
+                 class="Klipper\Component\Content\Uploader\Adapter\Tus\TusServerAdapter">
+            <tag name="klipper_content.uploader.adapter" priority="10" />
+            <argument type="service" id="klipper_content.tus_server" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+    </services>
+</container>

@@ -7,7 +7,7 @@
     <services>
         <service id="klipper_content.serializer.url_generator"
                  class="Klipper\Component\Content\Serializer\UrlGenerator">
-            <argument type="service" id="klipper_routing.organizational_routing"/>
+            <argument type="service" id="klipper_routing"/>
             <argument type="service" id="klipper_routing_extra.property_path_matcher"/>
         </service>
 

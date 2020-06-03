@@ -32,8 +32,6 @@ use TusPhp\Tus\Server;
 class KlipperContentExtension extends Extension
 {
     /**
-     * {@inheritdoc}
-     *
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
@@ -41,9 +39,7 @@ class KlipperContentExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $ref = new \ReflectionClass($this);
-        $configPath = \dirname($ref->getFileName(), 2).'/Resources/config';
-        $loader = new Loader\XmlFileLoader($container, new FileLocator($configPath));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $this->configureImageManipulator($loader, $container, $config['image_manipulator']);
         $this->configureSerializer($loader);
@@ -69,8 +65,6 @@ class KlipperContentExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws
      */
     private function configureImageManipulator(LoaderInterface $loader, ContainerBuilder $container, array $config): void
@@ -99,8 +93,6 @@ class KlipperContentExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws
      */
     private function configureSerializer(LoaderInterface $loader): void
@@ -111,8 +103,6 @@ class KlipperContentExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws
      */
     private function configureDownloader(LoaderInterface $loader): void
@@ -121,8 +111,6 @@ class KlipperContentExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws
      */
     private function configureUploader(LoaderInterface $loader, ContainerBuilder $container, array $config): void
@@ -172,8 +160,6 @@ class KlipperContentExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws
      */
     private function configureStreamWrapper(LoaderInterface $loader): void

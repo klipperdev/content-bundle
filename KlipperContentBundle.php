@@ -23,9 +23,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class KlipperContentBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new StreamWrapperPass());

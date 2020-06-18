@@ -46,6 +46,7 @@ class KlipperContentExtension extends Extension
         $this->configureDownloader($loader);
         $this->configureUploader($loader, $container, $config['uploader']);
         $this->configureStreamWrapper($loader);
+        $this->configureContentManager($loader);
     }
 
     /**
@@ -165,5 +166,13 @@ class KlipperContentExtension extends Extension
     private function configureStreamWrapper(LoaderInterface $loader): void
     {
         $loader->load('stream_wrapper.xml');
+    }
+
+    /**
+     * @throws
+     */
+    private function configureContentManager(LoaderInterface $loader): void
+    {
+        $loader->load('content.xml');
     }
 }

@@ -14,6 +14,18 @@
         <service id="klipper_content.subscriber.json_serializer"
                  class="Klipper\Component\Content\Serializer\Listener\UrlSerializerSubscriber">
             <tag name="jms_serializer.event_subscriber"/>
+        </service>
+
+        <service id="klipper_content.serializer.handler"
+                 class="Klipper\Component\Content\Serializer\Handler\UrlGeneratorHandler">
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\Url" direction="serialization" format="json" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\Url" direction="serialization" format="xml" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\OrgUrl" direction="serialization" format="json" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\OrgUrl" direction="serialization" format="xml" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\LangUrl" direction="serialization" format="json" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\LangUrl" direction="serialization" format="xml" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\LangOrgUrl" direction="serialization" format="json" method="generateUrl"/>
+            <tag name="jms_serializer.handler" type="Klipper\Component\Content\Serializer\Type\LangOrgUrl" direction="serialization" format="xml" method="generateUrl"/>
             <argument type="service" id="klipper_content.serializer.url_generator" />
         </service>
     </services>

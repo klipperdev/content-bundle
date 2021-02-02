@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4.0",
+        "php": "^7.4.0|^8.0.0",
         "klipper/content": "^2.0.0",
         "klipper/system": "^2.0.0",
         "symfony/framework-bundle": "^5.2.0"

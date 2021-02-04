@@ -10,8 +10,20 @@
                  public="true">
             <argument type="service" id="klipper_content.uploader" />
             <argument type="service" id="klipper_content.downloader" />
+            <argument type="service" id="klipper_content.uploader_name_config_registry" />
+            <argument type="service" id="filesystem" on-invalid="null"/>
+            <argument type="service" id="klipper_content.image_manipulator.cache" on-invalid="null"/>
         </service>
 
         <service id="Klipper\Component\Content\ContentManagerInterface" alias="klipper_content.manager" />
+
+
+        <service id="klipper_content.uploader_name_config_registry"
+                 class="Klipper\Component\Content\Config\UploaderNameConfigRegistry"
+                 public="true">
+            <argument type="collection" />
+        </service>
+
+        <service id="Klipper\Component\Content\Config\UploaderNameConfigRegistryInterface" alias="klipper_content.uploader_name_config_registry" />
     </services>
 </container>

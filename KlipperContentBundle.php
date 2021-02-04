@@ -14,6 +14,7 @@ namespace Klipper\Bundle\ContentBundle;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\StreamWrapperPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderAdapterPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderConfigurationPass;
+use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderNameConfigPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderNamerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -29,5 +30,6 @@ class KlipperContentBundle extends Bundle
         $container->addCompilerPass(new UploaderConfigurationPass());
         $container->addCompilerPass(new UploaderAdapterPass());
         $container->addCompilerPass(new UploaderNamerPass());
+        $container->addCompilerPass(new UploaderNameConfigPass());
     }
 }

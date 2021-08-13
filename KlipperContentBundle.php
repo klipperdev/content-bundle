@@ -11,6 +11,7 @@
 
 namespace Klipper\Bundle\ContentBundle;
 
+use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\DoctrineDeleteContentConfigPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\StreamWrapperPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderAdapterPass;
 use Klipper\Bundle\ContentBundle\DependencyInjection\Compiler\UploaderConfigurationPass;
@@ -31,5 +32,6 @@ class KlipperContentBundle extends Bundle
         $container->addCompilerPass(new UploaderAdapterPass());
         $container->addCompilerPass(new UploaderNamerPass());
         $container->addCompilerPass(new UploaderNameConfigPass());
+        $container->addCompilerPass(new DoctrineDeleteContentConfigPass());
     }
 }

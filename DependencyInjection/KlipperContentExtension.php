@@ -11,8 +11,10 @@
 
 namespace Klipper\Bundle\ContentBundle\DependencyInjection;
 
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use JMS\SerializerBundle\JMSSerializerBundle;
 use Klipper\Bundle\RoutingBundle\KlipperRoutingBundle;
+use Klipper\Component\Batch\JobResult;
 use Klipper\Component\Content\Uploader\UploaderConfiguration;
 use Klipper\Component\System\Util\SystemUtil;
 use Symfony\Component\Config\FileLocator;
@@ -22,6 +24,8 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Messenger\MessageBus;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use TusPhp\Tus\Server;
 
 /**
@@ -47,6 +51,7 @@ class KlipperContentExtension extends Extension
         $this->configureUploader($loader, $container, $config['uploader']);
         $this->configureStreamWrapper($loader);
         $this->configureContentManager($loader);
+        $this->configureDoctrine($loader);
     }
 
     /**
@@ -174,5 +179,22 @@ class KlipperContentExtension extends Extension
     private function configureContentManager(LoaderInterface $loader): void
     {
         $loader->load('content.xml');
+    }
+
+    /**
+     * @throws
+     */
+    private function configureDoctrine(LoaderInterface $loader): void
+    {
+        if (class_exists(JobResult::class)) {
+            $loader->load('batch.xml');
+
+            if (class_exists(DoctrineBundle::class)
+                && class_exists(MessageBus::class)
+                && class_exists(PropertyAccess::class)
+            ) {
+                $loader->load('doctrine_messenger.xml');
+            }
+        }
     }
 }

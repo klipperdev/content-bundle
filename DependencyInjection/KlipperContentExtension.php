@@ -16,13 +16,16 @@ use JMS\SerializerBundle\JMSSerializerBundle;
 use Klipper\Bundle\RoutingBundle\KlipperRoutingBundle;
 use Klipper\Component\Batch\JobResult;
 use Klipper\Component\Content\Uploader\UploaderConfiguration;
+use Klipper\Component\Resource\Domain\DomainManagerInterface;
 use Klipper\Component\System\Util\SystemUtil;
+use Klipper\Contracts\Model\FilePathInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -123,6 +126,14 @@ class KlipperContentExtension extends Extension
     {
         $loader->load('uploader.xml');
         $loader->load('uploader_namer.xml');
+
+        if (interface_exists(DomainManagerInterface::class)
+            && interface_exists(EventSubscriberInterface::class)
+            && interface_exists(FilePathInterface::class)
+            && class_exists(PropertyAccess::class)
+        ) {
+            $loader->load('uploader_listener.xml');
+        }
 
         if ($config['form_data_adapter']) {
             $loader->load('uploader_adapter_form_data.xml');

@@ -169,6 +169,7 @@ class KlipperContentExtension extends Extension
                 $maxSize,
                 $uploaderConfig['allowed_type_mimes'],
                 $uploaderConfig['namer'],
+                $uploaderConfig['attachment_class'],
             ]);
             $def->addTag('klipper_content.uploader.config');
 

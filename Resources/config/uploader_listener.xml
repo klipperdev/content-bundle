@@ -20,5 +20,14 @@
             <argument type="service" id="klipper_resource.domain_manager" />
             <argument type="service" id="klipper_content.manager" />
         </service>
+
+        <service id="klipper_content.listener.attachment_upload_subscriber"
+                 class="Klipper\Component\Content\Listener\AttachmentUploadSubscriber"
+                 public="false">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="klipper_resource.domain_manager" />
+            <argument type="service" id="klipper_content.manager" />
+            <argument type="service" id="mime_types" />
+        </service>
     </services>
 </container>

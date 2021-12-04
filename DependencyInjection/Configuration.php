@@ -142,6 +142,7 @@ class Configuration implements ConfigurationInterface
             ->scalarPrototype()->end()
             ->end()
             ->scalarNode('namer')->defaultNull()->end()
+            ->scalarNode('attachment_class')->defaultNull()->end()
             ->end()
             ->end()
         ;

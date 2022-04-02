@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('klipper_content');
+
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 
@@ -42,6 +43,7 @@ class Configuration implements ConfigurationInterface
     private function getImageManipulatorNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('image_manipulator');
+
         /** @var ArrayNodeDefinition $rootNode */
         $node = $treeBuilder->getRootNode();
         $node
@@ -88,6 +90,7 @@ class Configuration implements ConfigurationInterface
     private function getUploaderNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('uploader');
+
         /** @var ArrayNodeDefinition $rootNode */
         $node = $treeBuilder->getRootNode();
         $node
@@ -105,6 +108,7 @@ class Configuration implements ConfigurationInterface
     private function getUploaderAdapterNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('adapters');
+
         /** @var ArrayNodeDefinition $rootNode */
         $node = $treeBuilder->getRootNode();
         $node
@@ -128,6 +132,7 @@ class Configuration implements ConfigurationInterface
     private function getUploaderConfigurationNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('configurations');
+
         /** @var ArrayNodeDefinition $rootNode */
         $node = $treeBuilder->getRootNode();
         $node

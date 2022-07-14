@@ -26,6 +26,9 @@
             <argument type="collection"/>
             <argument type="service" id="filesystem" />
         </service>
+
+        <service id="Klipper\Component\Content\ImageManipulator\ImageManipulator" alias="klipper_content.image_manipulator"/>
+        <service id="Klipper\Component\Content\ImageManipulator\ImageManipulatorInterface" alias="klipper_content.image_manipulator"/>
     </services>
 
 </container>

@@ -18,7 +18,7 @@
         "symfony/framework-bundle": "^5.4.0"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "2.4.0",
+        "doctrine/doctrine-bundle": "^2.7.0",
         "klipper/model-contracts": "^2.0.0",
         "klipper/doctrine-extra": "^2.0.0",
         "klipper/resource-bundle": "^2.0.0",
